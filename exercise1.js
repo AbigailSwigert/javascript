@@ -3,12 +3,18 @@
 // Problem 1:
 // Part 1: Write a JavaScript function that converts the current temperature from Fahrenheit to Celsius. Declare a variable for the current temperature then store the Celsius temperature into a variable. Console log the variable.
 
-// Part 2: Write another funciton that converts the Celsius temperature back to Fahrenheit. 
+// Part 2: Write another function that converts the Celsius temperature back to Fahrenheit. 
 
 //your code...
 
 
+function convertFromFahrenheit(currentFahrenheit) {
+    console.log("It is currently " + (currentCelsius = (currentFahrenheit - 32) * (5 / 9)) + " degrees Celsius.");
+}
 
+function convertFromCelsius(currentCelsius) {
+    console.log("It is currently " + (currentFahrenheit = (currentCelsius * (9 / 5) + 32)) + " degrees Fahrenheit.");
+}
 
 
 
@@ -19,9 +25,13 @@
 //your code...
 
 
-
-
-
+function canVote(age) {
+    if (age >= 18) {
+        console.log("yes");
+    } else {
+        console.log("no");
+    }
+}
 
 
 /************************************************************* */
@@ -31,9 +41,10 @@
 //your code...
 
 
-
-
-
+function convertString(){
+    var myString = "The five boxing wizards jump quickly."
+    return myString.split(" ").join(" ");
+}
 
 
 /************************************************************* */
@@ -42,8 +53,9 @@
 
 //your code...
 
-
-
+function reverseNumber(phoneNumber) {
+    return phoneNumber.toString().split("").reverse().join("");
+}
 
 
 /************************************************************* */
@@ -53,7 +65,9 @@
 //your code...
 
 
-
+function getCarInfo(carYear, carColor, carMake, carModel) {
+    return car = {year:carYear, color:carColor, make:carMake, model:carModel};
+}
 
 
 
@@ -65,6 +79,15 @@
 //your code...
 
 
+function evenOrOdd() {
+    for (x = 0; x <= 15; x++) {
+        if (x % 2 === 0) {
+            console.log(x + " is even");
+        } else {
+            console.log(x + " is odd");
+        }
+    }
+}
 
 
 /************************************************************* */
@@ -72,6 +95,24 @@
 // Write a JavaScript function that iterates the integers from 1 to 100. For multiples of 3 print "TEK" instead of the number and for multiples of 5, print "camp." For numbers that are multiples of both 3 and 5, print "TEKcamp."
 
 //your code...
+
+function tekCamp() {
+    for (x = 1; x <= 100; x++) {
+        switch(true) {
+            case x / 3 === 0 && x / 5 === 0:
+                console.log("TEKcamp");
+                break;
+            case x / 3 === 0:
+                console.log("TEK");
+                break;
+            case x / 5 === 0:
+                console.log("camp");
+                break;
+            default:
+                console.log(x);
+        }
+    }
+}
 
 
 /************************************************************* */
@@ -84,6 +125,10 @@ const nums = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ];
 //your code...
 
 
+for (x = 0; x < nums.length; x += 3) {
+    console.log(x);
+}
+
 
 // Problem 9:
 const foodArray = [ 'potatoes', 'tamales', 'lemon','strawberries','chocolate', 'pudding', {school : 'TEKcamp'} ];
@@ -94,9 +139,41 @@ const adjectiveArray = [ 'salty', 'spicy', 'sour', 'sweet', 'rich','creamy','ama
 // "for" loop that console.log()'s a sentence for each
 // corresponding value in the arrays. Add the word "is" or "are" depending on if the food is singular or plural.  "Potatoes are salty", "Lemon is sour".
 
+const school = "TEKcamp";
+foodArray[foodArray.length - 1] = school;
+console.log(foodArray[foodArray.length -1]);
+
+
+for (x = 0; x < foodArray.length; x++) {
+    var plural = foodArray[x].endsWith("s");
+    if (plural === true){
+        verb = " are ";
+    } else {
+        verb = " is ";
+    };
+    console.log(foodArray[x] + verb + adjectiveArray[x]);
+}
+
 /************************************************************* */
-// Bonus Assignment: Create 4 mathematical function expressions, add,subtract,multiply,divide.  put them in an array, and create a doMath() function that randomly does one of the 4 operations whenever it is run.  the doMath() function should print out what mathetmatical function was carried out.  The doMath() function should return the computed value of any operation performed.
-const operations = [];
-function doMath() {};
+// Bonus Assignment: Create 4 mathematical function expressions, add,subtract,multiply,divide.  put them in an array, and create a doMath() function that randomly does one of the 4 operations whenever it is run.  the doMath() function should print out what mathematical function was carried out.  The doMath() function should return the computed value of any operation performed.
+const operations = ["add", "subtract", "multiply", "divide"];
+function doMath(x,y) {
+    randomExpression = Math.floor(Math.random() * 4);
+    switch(true) {
+        case operations[randomExpression] === "add":
+            console.log(x + " + " + y + " = " + (x += y));
+            break;
+        case operations[randomExpression] === "subtract":
+            console.log(x + " - " + y + " = " + (x -= y));
+            break;
+        case operations[randomExpression] === "multiply":
+            console.log(x + " * " + y + " = " + (x * y));
+            break;
+        case operations[randomExpression] === "divide":
+            console.log(x + " / " + y + " = " + (x / y));
+            break;
+    }
+};
+
 
 
