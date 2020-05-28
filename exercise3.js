@@ -65,6 +65,7 @@ numsArray2.forEach(n => { // reach into each item in numsArray2
   if (n > 3) { // check to see if the itme is grater than 3
     greaterThan3.push(n); // push it into greaterThan3 array
   };
+  return greaterThan3;
 });
 
 
@@ -76,9 +77,10 @@ numsArray2.forEach(n => { // reach into each item in numsArray2
 
 //your code...
 
+const randomArray = [9, 0, 2, 10, 378];
+let randomArraySum = 0;
 
-
-
+randomArray.forEach(n => randomArraySum += n); // reach into randomArray and add each item to randomArraySum
 
 
 /************************************************************* */
