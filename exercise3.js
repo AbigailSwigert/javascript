@@ -93,9 +93,21 @@ randomArray.forEach(n => randomArraySum += n); // reach into randomArray and add
 
 //your code...
 
-
-
-
+function stringOfDNA(str) {
+  compDNA = str.split('');
+  for (x = 0; x < compDNA.length; x++) {
+    if (compDNA[x] === 'G') {
+      compDNA.splice(x, 1, 'C');
+    } else if (compDNA[x] === 'C'){
+      compDNA.splice(x, 1, 'G');
+    } else if (compDNA[x] === 'A'){
+      compDNA.splice(x, 1, 'T');
+    } else if (compDNA[x] === 'T'){
+      compDNA.splice(x, 1, 'A');
+    };
+  };
+  return compDNA;
+}
 
 
 /************************************************************* */
