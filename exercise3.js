@@ -9,8 +9,13 @@
 
 //your code...
 
-
-
+function checkEmpty(str) {
+  if (str) { //checks to see if str is true (because empty strings are false, but all others are true)
+    console.log(false); // because str === true and therefore the string is not empty
+  } else {
+    console.log(true); // because str !== true and therefore the string is empty
+  }
+}
 
 
 /************************************************************* */
@@ -22,7 +27,9 @@
 
 //your code...
 
+const lies = 'Learning JavaScript is fun!';
 
+const truth = lies.replace('fun', 'stressful'); //reaching into lies to replace "fun" with "stressful"
 
 
 /************************************************************* */
@@ -34,7 +41,12 @@
 //your code...
 
 
-
+function squareNums() {
+  const numsArray = [1, 2, 3, 4, 5]; // creating array of numbers
+  const squaredArray = []; // creating empty array to hold numbers from numsArray after they have been squared
+  numsArray.forEach(n => squaredArray.push(n**2)); // reaching into each item in numsArray multiplying it by itself, and pushing it into squaredArray
+  return squaredArray; // returning now filled squaredArray
+}
 
 
 
