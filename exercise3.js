@@ -117,13 +117,31 @@ function stringOfDNA(str) {
 const numbers = [2,23,1,2,1,1,1,2,2.5,20,200,2000,,{k:1},20000,19999,1878,140,23,4,"sk",true,true,"true-dat","nice","one","two","three","3","tea",[]];
 
 function maxNumber(numbers) {
-    //your code...
-}
+  //your code...
+  function numbersOnly(numbers){
+    numbers.splice(21,2);
+    for (x = 0; x < numbers.length; x++) {
+      if (numbers[x] === 'one') {
+        numbers[x] = 1;
+      } else if (numbers[x] === 'two') {
+        numbers[x] = 2;
+      } else if (numbers[x] === 'three') {
+        numbers[x] = 3;
+      } else {
+        numbers[x] = Number(numbers[x]);
+      };
+    };
+    return numbers.filter(Boolean);
+  };
+  return Math.max.apply(null, numbersOnly(numbers));
+};
 
 // 7.b -Write a function that sorts the given numbers array.  Allow the function to sort the array in descending order
 
 function sortNums(numbers,desc=false) {
-    //your code...
+  //your code...
+  numbers.sort();
+  return numbers.reverse();
 };
 
 
