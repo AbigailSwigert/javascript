@@ -58,9 +58,14 @@ function squareNums() {
 
 //your code...
 
+const numsArray2 = [1, 3, 5, 7, 9, 1, 3, 5];
+const greaterThan3 = [];
 
-
-
+numsArray2.forEach(n => { // reach into each item in numsArray2
+  if (n > 3) { // check to see if the itme is grater than 3
+    greaterThan3.push(n); // push it into greaterThan3 array
+  };
+});
 
 
 /************************************************************* */
