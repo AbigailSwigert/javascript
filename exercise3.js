@@ -40,7 +40,6 @@ const truth = lies.replace('fun', 'stressful'); //reaching into lies to replace 
 
 //your code...
 
-
 function squareNums() {
   const numsArray = [1, 2, 3, 4, 5]; // creating array of numbers
   const squaredArray = []; // creating empty array to hold numbers from numsArray after they have been squared
@@ -68,7 +67,6 @@ numsArray2.forEach(n => { // reach into each item in numsArray2
   return greaterThan3;
 });
 
-
 /************************************************************* */
 // Problem 5:
 // Now declare another array of numbers that has any 5 numbers. Write a JavaScript program that returns the sum of those numbers. Use an arrow function and one of the built-in array methods. 
@@ -80,7 +78,7 @@ numsArray2.forEach(n => { // reach into each item in numsArray2
 const randomArray = [9, 0, 2, 10, 378];
 let randomArraySum = 0;
 
-randomArray.forEach(n => randomArraySum += n); // reach into randomArray and add each item to randomArraySum
+randomArray.forEach(n => randomArraySum += n);
 
 
 /************************************************************* */
@@ -109,7 +107,6 @@ function stringOfDNA(str) {
   return compDNA;
 }
 
-
 /************************************************************* */
 // Problem 7:
 
@@ -118,32 +115,24 @@ const numbers = [2,23,1,2,1,1,1,2,2.5,20,200,2000,,{k:1},20000,19999,1878,140,23
 
 function maxNumber(numbers) {
   //your code...
-  function numbersOnly(numbers){
-    numbers.splice(21,2);
-    for (x = 0; x < numbers.length; x++) {
-      if (numbers[x] === 'one') {
-        numbers[x] = 1;
-      } else if (numbers[x] === 'two') {
-        numbers[x] = 2;
-      } else if (numbers[x] === 'three') {
-        numbers[x] = 3;
-      } else {
-        numbers[x] = Number(numbers[x]);
-      };
-    };
-    return numbers.filter(Boolean);
-  };
-  return Math.max.apply(null, numbersOnly(numbers));
+  const truthys = numbers.filter(el => el);
+  const primitives = truthys.filter(n => typeof n != 'object');
+  const noBools = primitives.filter(p => typeof p != 'boolean');
+  const numStrings = ["zero","one","two","three"];
+  const numWithStrings = noBools.map(nb => numStrings.includes(nb) ? numStrings.indexOf(nb) : nb);
+  const numWithStrings2 = numWithStrings;
+  numWithStrings2[24] = Number(numWithStrings[24]);
+  const nums = numWithStrings2.filter(n => typeof n != 'string');
+
+  return Math.max(...nums);
 };
 
 // 7.b -Write a function that sorts the given numbers array.  Allow the function to sort the array in descending order
 
 function sortNums(numbers,desc=false) {
   //your code...
-  numbers.sort();
-  return numbers.reverse();
+  return numbers.sort().reverse();
 };
-
 
 
 
@@ -153,14 +142,29 @@ function sortNums(numbers,desc=false) {
 
 const mapObj = new Map();
 mapObj.set({company : "TEKsystems"},"object");
-mapObj.set(2,'number');
-mapObj.set('Hello','string');
-mapObj.set(true, 'boolean');
-mapObj.set([1,2,3], 'array');
-mapObj.set(function() {}, 'function');
+Object.defineProperty(mapObj, 2, {
+    value: 'number',
+    enumerable: true
+});
+Object.defineProperty(mapObj, 'Hello', {
+    value: 'string',
+    enumerable: true
+});
+Object.defineProperty(mapObj, true, {
+    value: 'boolean',
+    enumerable: true
+});
+Object.defineProperty(mapObj, [1,2,3], {
+    value: 'array',
+    enumerable: true
+});
+Object.defineProperty(mapObj, function() {}, {
+    value: 'function',
+    enumerable: true
+});
 
 console.log(mapObj.has({company : "TEKsystems"}));
-console.log("When you set and object to another object key, the key object is stringified to [object Object]") 
+console.log("When you set and object to another object key, the key object is stringified to [object Object]")
 //The above console.log() statmeent returns false.  Write another console.log() statement explaining why this line of code prints false.  Refactor the code on line 106, so you can successfully check to see if {company : "TEKsystems"} exists in the mapObj.
 
 //your code...
@@ -170,6 +174,7 @@ console.log(mapObj.has(company));
 
 //loop through the mapObj and create a new array of only the data types, leaving out the example keys of the mapObj.  Use array methods to do this.  Example output : ['string',number','boolean',array','object']
 
+const typesArray = Object.values(mapObj);
 
 /************************************************************* */
 //Problem 11:
@@ -177,24 +182,38 @@ console.log(mapObj.has(company));
 let ones = [1,11,111,1111,11111,111111,1111111,11111111,111111111,1111111111];
 //reverse the array, without modifying the ones array.
 
-const reverseOnes = ones.reverse();
+const reverseOnes = ones.slice().reverse();
 
 /************************************************************* */
 //Problem 12:
 //create a function called performer(cb) that takes in a callback function and runs that callback function.  It should return the output of the callback function.
 
 function performer(cb) {
-  //code goes here
-  cb();
+    //code goes here
+    cb();
 };
 
 function cb() {
-console.log('This is a callback function.')
+  console.log('This is a callback function.')
 };
-
-performer(cb);
 
 
 /************************************************************* */
 //Bonus assignment:
 //research a new feature of ES6+ and create an example of it's use case here.  Be sure to write comments explaining what the feature is and why it is useful.
+
+// Template literals 
+// These make it much easier and faster to not only make, but read strings that have variables passed into them.
+
+// Here are some variables to put in a string.
+const firstName = "Abigail";
+const lastName = "Swigert";
+const birthYear = 1996;
+const age = (2020 - birthYear);
+
+// Here is the console log of the long string wiht multiple variables passed into it, without template literals
+console.log("My name is " + firstName + " " + lastName + ". I was born in the year " + birthYear + ", which makes me " + age + " years old.")
+
+// Here is is written with template literals
+console.log(`My name is ${firstName} ${lastName}. I was born in the year ${birthYear}, which makes me ${age} years old.`)
+// This is far easier to type and read, and makes you less likely to miss a space, or plus sign somewhere
