@@ -153,12 +153,20 @@ function sortNums(numbers,desc=false) {
 
 const mapObj = new Map();
 mapObj.set({company : "TEKsystems"},"object");
+mapObj.set(2,'number');
+mapObj.set('Hello','string');
+mapObj.set(true, 'boolean');
+mapObj.set([1,2,3], 'array');
+mapObj.set(function() {}, 'function');
 
-
-console.log(mapObj.has({company : "TEKsystems"}));  
+console.log(mapObj.has({company : "TEKsystems"}));
+console.log("When you set and object to another object key, the key object is stringified to [object Object]") 
 //The above console.log() statmeent returns false.  Write another console.log() statement explaining why this line of code prints false.  Refactor the code on line 106, so you can successfully check to see if {company : "TEKsystems"} exists in the mapObj.
 
 //your code...
+var company = {company : "TEKsystems"};
+mapObj.set(company,"object");
+console.log(mapObj.has(company));
 
 //loop through the mapObj and create a new array of only the data types, leaving out the example keys of the mapObj.  Use array methods to do this.  Example output : ['string',number','boolean',array','object']
 
@@ -169,14 +177,22 @@ console.log(mapObj.has({company : "TEKsystems"}));
 let ones = [1,11,111,1111,11111,111111,1111111,11111111,111111111,1111111111];
 //reverse the array, without modifying the ones array.
 
+const reverseOnes = ones.reverse();
 
 /************************************************************* */
 //Problem 12:
 //create a function called performer(cb) that takes in a callback function and runs that callback function.  It should return the output of the callback function.
 
 function performer(cb) {
-    //code goes here
-}
+  //code goes here
+  cb();
+};
+
+function cb() {
+console.log('This is a callback function.')
+};
+
+performer(cb);
 
 
 /************************************************************* */
